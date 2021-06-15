@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>qmdropdown.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+qmdropdown.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">tkinter </span><span class="s0">import </span><span class="s1">*</span>
+<span class="s0">from </span><span class="s1">tkinter </span><span class="s0">import </span><span class="s1">ttk</span>
+
+<span class="s1">root = Tk()</span>
+<span class="s1">root.geometry(</span><span class="s2">&quot;400x400&quot;</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">selected(event):</span>
+    <span class="s3">#myLabel = Label(root, text=clicked.get()).pack()</span>
+    <span class="s0">if </span><span class="s1">clicked.get() == </span><span class="s2">'Friday'</span><span class="s1">:</span>
+        <span class="s1">myLabel = Label(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Yay! It's Friday&quot;</span><span class="s1">).pack()</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s1">myLabel = Label(root</span><span class="s0">, </span><span class="s1">text=clicked.get()).pack()</span>
+
+<span class="s0">def </span><span class="s1">comboclick(event):</span>
+    <span class="s3">#myLabel = Label(root, text=myCombo.get()).pack()</span>
+    <span class="s0">if </span><span class="s1">myCombo.get() == </span><span class="s2">'Friday'</span><span class="s1">:</span>
+        <span class="s1">myLabel = Label(root</span><span class="s0">, </span><span class="s1">text=</span><span class="s2">&quot;Yay! It's Friday&quot;</span><span class="s1">).pack()</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s1">myLabel = Label(root</span><span class="s0">, </span><span class="s1">text=myCombo.get()).pack()</span>
+
+<span class="s1">options =  [</span>
+    <span class="s2">&quot;Monday&quot;</span><span class="s0">,</span>
+    <span class="s2">&quot;Tuesday&quot;</span><span class="s0">,</span>
+    <span class="s2">&quot;Wednesday&quot;</span><span class="s0">,</span>
+    <span class="s2">&quot;Thursday&quot;</span><span class="s0">,</span>
+    <span class="s2">&quot;Friday&quot;</span><span class="s0">,</span>
+    <span class="s2">&quot;Saturday&quot;</span><span class="s0">,</span>
+    <span class="s2">&quot;Sunday&quot;</span><span class="s0">,</span>
+<span class="s1">]</span>
+
+<span class="s1">clicked = StringVar()</span>
+<span class="s1">clicked.set(options[</span><span class="s4">0</span><span class="s1">])</span>
+
+<span class="s1">drop = OptionMenu(root</span><span class="s0">, </span><span class="s1">clicked</span><span class="s0">, </span><span class="s1">*options</span><span class="s0">, </span><span class="s1">command=selected)</span>
+<span class="s1">drop.pack(pady=</span><span class="s4">20</span><span class="s1">)</span>
+
+<span class="s1">myCombo = ttk.Combobox(root</span><span class="s0">, </span><span class="s1">value=options)</span>
+<span class="s1">myCombo.current(</span><span class="s4">0</span><span class="s1">)</span>
+<span class="s1">myCombo.bind(</span><span class="s2">&quot;&lt;&lt;ComboboxSelected&gt;&gt;&quot;</span><span class="s0">, </span><span class="s1">comboclick)</span>
+<span class="s1">myCombo.pack()</span>
+
+<span class="s3">#myButton = Button(root, text=&quot;select from list&quot;, command=selected)</span>
+<span class="s3">#myButton.pack()</span>
+
+<span class="s1">root.mainloop()</span></pre>
+</body>
+</html>
