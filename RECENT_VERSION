@@ -1,1 +1,83 @@
+from tkinter import *
+from tkinter import ttk
 
+root = Tk()
+root.geometry("800x800")
+
+
+def selected(event):
+
+    if clicked.get() == 'Bachelor':
+        myLabel = Label(root, text="Ist es denn der Spitzensteuersatz").pack()
+
+    else:
+        myLabel = Label(root, text=clicked.get()).pack()
+
+
+Abschluss =  [
+    "Bachelor",
+    "Duales Studium",
+    "Master",
+]
+
+
+
+Label(root, text="Name").pack()
+
+
+eingabefeld_wert= StringVar()
+eingabefeld= Entry(root, textvariable=eingabefeld_wert)
+eingabefeld.pack()
+
+
+Label(root, text="EMail").pack()
+
+eingabefeld_wert2= StringVar()
+eingabefeld2= Entry(root, textvariable=eingabefeld_wert2)
+eingabefeld2.pack()
+
+Label(root, text="Nationality").pack()
+
+eingabefeld_wert3= StringVar()
+eingabefeld3= Entry(root, textvariable=eingabefeld_wert3)
+eingabefeld3.pack()
+
+clicked = StringVar()
+clicked.set(Abschluss[0])
+
+drop1 = OptionMenu(root, clicked, *Abschluss, command=selected)
+drop1.pack(pady=20)
+
+
+def pressed():
+
+    newWindow = Toplevel(root)
+    newWindow.title("Expense Tracker")
+    newWindow.geometry("800x800")
+
+    my_tree = ttk.Treeview(newWindow)
+
+    my_tree['columns'] = ("Product name", "Category", "Date")
+    my_tree.column("#0", width=120, minwidth=30)
+    my_tree.column("Product name", anchor=W, width=120)
+    my_tree.column("Category", anchor=CENTER, width=120)
+    my_tree.column("Date", anchor=W, width=120)
+
+    my_tree.heading("#0", text="Label", anchor=W)
+    my_tree.heading("Product name", text="Product name", anchor=W)
+    my_tree.heading("Category", text="Category", anchor=CENTER)
+    my_tree.heading("Date", text="Date", anchor=W)
+
+    my_tree.insert(parent='', index='end', iid=0, text="parent", values=("Macbook Pro", "Electronics", "21.06"))
+    my_tree.insert(parent='', index='end', iid=1, text="parent", values=("Macbook Pro", "Electronics", "21.06"))
+
+    my_tree.pack(pady=10)
+
+    pass
+
+
+button = Button(root, text='Submit', command=pressed(), bg='medium sea green', fg='white')
+button.pack(pady=10)
+
+
+root.mainloop()
